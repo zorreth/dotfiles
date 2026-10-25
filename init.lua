@@ -842,6 +842,7 @@ do
         python = true,
         typescript = true,
         typescriptreact = true,
+        markdown = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }
@@ -855,12 +856,10 @@ do
     -- You can also specify external formatters in here.
     formatters_by_ft = {
       rust = { 'rustfmt' },
-      -- Conform can also run multiple formatters sequentially
       python = { 'isort', 'black' },
-      --
-      -- You can use 'stop_after_first' to run the first available formatter from the list
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      markdown = { 'prettierd', 'prettier', stop_after_first = true },
     },
   }
 
@@ -1031,7 +1030,7 @@ do
   --
   -- require 'kickstart.plugins.debug'
   require 'kickstart.plugins.indent_line'
-  require 'kickstart.plugins.lint'
+  -- require 'kickstart.plugins.lint'
   require 'kickstart.plugins.autopairs'
   -- require 'kickstart.plugins.neo-tree'
 
