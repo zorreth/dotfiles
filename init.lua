@@ -744,6 +744,8 @@ do
     pyright = {},
     tsc = {},
 
+    tailwindcss = {},
+
     eslint = {},
     eslint_d = {},
 
