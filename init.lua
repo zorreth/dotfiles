@@ -743,11 +743,15 @@ do
     gopls = {},
     pyright = {},
     tsc = {},
+    cssls = {},
 
     tailwindcss = {},
 
     eslint = {},
     eslint_d = {},
+    oxlint = {},
+
+    jsonls = {},
 
     --
     -- Some languages (like rust) have entire language plugins that can be useful:
@@ -843,6 +847,8 @@ do
         typescript = true,
         typescriptreact = true,
         markdown = true,
+        css = true,
+        rust = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }
@@ -860,6 +866,7 @@ do
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       markdown = { 'prettierd', 'prettier', stop_after_first = true },
+      json = { 'prettierd', 'prettier', stop_after_first = true },
     },
   }
 
