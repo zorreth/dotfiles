@@ -177,6 +177,14 @@ do
   vim.opt.shiftwidth = 2
   vim.opt.tabstop = 2
   vim.opt.softtabstop = 2
+
+  vim.filetype.add {
+    extension = {
+      mdx = 'mdx',
+    },
+  }
+
+  vim.treesitter.language.register('markdown', 'mdx')
 end
 
 -- ============================================================
@@ -850,6 +858,7 @@ do
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       markdown = { 'prettierd', 'prettier', stop_after_first = true },
+      css = { 'prettierd', 'prettier', stop_after_first = true },
       json = { 'prettierd', 'prettier', stop_after_first = true },
     },
   }
