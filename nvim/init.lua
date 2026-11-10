@@ -853,7 +853,17 @@ do
   vim.pack.add { gh 'stevearc/conform.nvim' }
   require('conform').setup {
     notify_on_error = false,
-    format_on_save = { timeout_ms = 500 },
+    format_on_save = function(bufnr)
+      -- You can specify filetypes NOT to autoformat on save here:
+      local disabled_filetypes = {
+        jsonc = true,
+      }
+      if not disabled_filetypes[vim.bo[bufnr].filetype] then
+        return { timeout_ms = 500 }
+      else
+        return nil
+      end
+    end,
     default_format_opts = {
       lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
     },
@@ -864,8 +874,10 @@ do
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       markdown = { 'prettierd', 'prettier', stop_after_first = true },
+      html = { 'prettierd', 'prettier', stop_after_first = true },
       css = { 'prettierd', 'prettier', stop_after_first = true },
       json = { 'prettierd', 'prettier', stop_after_first = true },
+      yaml = { 'prettierd', 'prettier', stop_after_first = true },
     },
   }
 
