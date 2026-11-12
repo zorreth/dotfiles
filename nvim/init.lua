@@ -753,19 +753,29 @@ do
     -- clangd = {},
     gopls = {},
     pyright = {},
-    tsc = {},
+    jsonls = {},
     cssls = {},
-
-    tailwindcss = {},
+    ts_ls = {
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+      init_options = {
+        plugins = {
+          {
+            name = '@vue/typescript-plugin',
+            location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+            languages = { 'vue' },
+          },
+        },
+      },
+    },
 
     eslint = {},
     eslint_d = {},
     oxlint = {},
-
-    jsonls = {},
-
     dockerls = {},
     docker_compose_language_service = {},
+
+    tailwindcss = {},
+    vue_ls = {},
 
     --
     -- Some languages (like rust) have entire language plugins that can be useful:
@@ -870,6 +880,7 @@ do
     -- You can also specify external formatters in here.
     formatters_by_ft = {
       rust = { 'rustfmt' },
+      go = { 'gofmt' },
       python = { 'isort', 'black' },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
@@ -878,6 +889,7 @@ do
       css = { 'prettierd', 'prettier', stop_after_first = true },
       json = { 'prettierd', 'prettier', stop_after_first = true },
       yaml = { 'prettierd', 'prettier', stop_after_first = true },
+      vue = { 'prettierd', 'prettier', stop_after_first = true },
     },
   }
 
