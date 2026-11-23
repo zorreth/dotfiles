@@ -1,3 +1,4 @@
 font-family = JetBrainsMono NF
 font-size = 16.0
 font-synthetic-style = no-italic, no-bold-italic
+theme = tokyonight
